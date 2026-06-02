@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Modak&family=Syne:wght@400;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", "Montserrat", "Inter", sans-serif;
+  --font-bubble: "Modak", cursive;
+  --font-syne: "Syne", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+  
+  --color-gloop-pink: #ff00a2;
+  --color-gloop-cyan: #00f2ff;
+  --color-gloop-black: #000000;
+  
+  --color-gold-accent: #c5a059;
+  --color-gold-light: #fdfcf0;
+  --color-bayou-dark: #081a14;
+  --color-bayou-mid: #0d2a21;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+/* PUFFY WHITE - GLOOP TRADEMARK TEXT */
+.puffy-white {
+  font-family: 'Modak', cursive;
+  color: white;
+  line-height: 1.1;
+  -webkit-text-stroke: 1.8px #000;
+  text-shadow: 4px 4px 0px #ff00a2;
+}
+
+/* CARDS */
+.card-service {
+  background: #111111;
+  border: 2px solid #222222;
+  border-radius: 1.8rem;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.card-service:hover {
+  border-color: #ff00a2;
+  transform: translateY(-5px);
+}
+
+.payment-info {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 1rem;
+  border-left: 4px solid #00f2ff;
+  margin-bottom: 20px;
+}
+
+/* EXPLAINER BOX */
+.explainer-box {
+  background: linear-gradient(135deg, #111111 0%, #050505 100%);
+  border: 2px dashed #ff00a2;
+  border-radius: 1.5rem;
+  padding: 24px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.part-tag {
+  background: #ff00a2;
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 10px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.video-container-small {
+  width: 100%;
+  aspect-ratio: 9/16;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 2px solid #00f2ff;
+  margin: 15px 0;
+}
+

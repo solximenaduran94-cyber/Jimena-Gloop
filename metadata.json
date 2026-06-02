@@ -1,0 +1,6 @@
+{
+  "name": "Invitación de 15 - Princesa y el Sapo",
+  "description": "Invitación mágica de 15 años inspirada en La Princesa y el Sapo. Incluye cuenta regresiva, confirmación de asistencia, mapa de Puerto Madero y QR de fotos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
