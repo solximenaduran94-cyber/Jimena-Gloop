@@ -629,9 +629,10 @@ export default function App() {
       {/* Navbar exactly matching user HTML */}
       <nav className="fixed top-0 w-full z-[9999] p-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center bg-black/70 backdrop-blur-md rounded-3xl px-6 py-3 border border-white/10 shadow-2xl">
-          <div className="flex items-center gap-2">
-            <div className="puffy-white text-xl uppercase tracking-tight text-left">
-              Jimena<br />Gloop
+          <div className="flex items-center gap-3">
+            <Star className="w-5 h-5 text-[#FF6B9E] fill-[#FF6B9E] animate-pulse shrink-0" />
+            <div className="puffy-white text-2xl uppercase tracking-wider text-left leading-none">
+              Gloop
             </div>
           </div>
           <div className="flex gap-4">
