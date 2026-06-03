@@ -33,7 +33,8 @@ import {
   X,
   Globe,
   Palette,
-  Code
+  Code,
+  Instagram
 } from 'lucide-react';
 
 import MagicBackground from './components/MagicBackground';
@@ -1426,6 +1427,76 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+ 
+      {/* SOCIAL MEDIA SHOWCASE */}
+      <section className="w-full max-w-4xl mx-auto px-6 py-16 text-center z-10 border-t border-white/5 mt-10">
+        <div className="bg-white/5 border border-white/10 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden backdrop-blur-md">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gloop-pink/10 rounded-full filter blur-[50px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-gloop-cyan/10 rounded-full filter blur-[50px] pointer-events-none" />
+          
+          <div className="flex justify-center items-center gap-2 mb-6 text-gloop-pink font-extrabold tracking-widest uppercase font-syne text-[10px] sm:text-xs">
+            <Sparkles className="w-4 h-4 animate-pulse text-[#FF6B9E]" />
+            <span>Nuestras Redes Oficiales</span>
+            <Sparkles className="w-4 h-4 animate-pulse text-[#FF6B9E]" />
+          </div>
+          
+          <h2 className="puffy-white text-4xl md:text-6xl mb-10 uppercase leading-none italic">
+            Trabajos &amp;<br />Inspiración Gloop
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            {/* Instagram Card */}
+            <a 
+              href="https://www.instagram.com/jimena.gloop?igsh=c3Zpdm12MXlib3A=" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group bg-black/60 hover:bg-black/90 border border-white/10 hover:border-gloop-pink/50 rounded-3xl p-6 flex flex-col items-center justify-between text-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,107,158,0.15)] hover:-translate-y-1"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <Instagram className="w-7 h-7 text-white" />
+              </div>
+              <div className="mt-4 mb-4">
+                <span className="text-[10px] text-[#FF6B9E] font-black uppercase tracking-widest font-syne block mb-2">Instagram</span>
+                <p className="text-xs text-slate-300 leading-relaxed font-light">
+                  📸 Podés ver algunos diseños en mi Instagram
+                </p>
+                <div className="text-[11px] text-white/50 font-mono mt-3 select-all bg-white/5 py-1 px-3 rounded-md border border-white/5">
+                  @jimena.gloop
+                </div>
+              </div>
+              <span className="text-[10px] text-white font-extrabold uppercase bg-gloop-pink rounded-xl px-4 py-1.5 leading-none tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">
+                Ver Diseños
+              </span>
+            </a>
+
+            {/* TikTok Card */}
+            <a 
+              href="https://www.tiktok.com/@jimenagloop?_r=1&_t=ZM-91mIKHXvxSl" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group bg-black/60 hover:bg-black/90 border border-white/10 hover:border-gloop-cyan/50 rounded-3xl p-6 flex flex-col items-center justify-between text-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,242,255,0.15)] hover:-translate-y-1"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-black border border-white/15 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 relative">
+                <div className="absolute top-0 left-0 w-full h-full rounded-2xl border-l-2 border-t-2 border-[#00f2fe]/40 mix-blend-screen" />
+                <div className="absolute bottom-0 right-0 w-full h-full rounded-2xl border-r-2 border-b-2 border-[#fe0979]/40 mix-blend-screen" />
+                <Video className="w-6 h-6 text-gloop-cyan" />
+              </div>
+              <div className="mt-4 mb-4">
+                <span className="text-[10px] text-[#00f2fe] font-black uppercase tracking-widest font-syne block mb-2">TikTok</span>
+                <p className="text-xs text-slate-300 leading-relaxed font-light">
+                  🎥 Y también en TikTok
+                </p>
+                <div className="text-[11px] text-white/50 font-mono mt-3 select-all bg-white/5 py-1 px-3 rounded-md border border-white/5">
+                  @jimenagloop
+                </div>
+              </div>
+              <span className="text-[10px] text-black font-extrabold uppercase bg-gloop-cyan rounded-xl px-4 py-1.5 leading-none tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">
+                Ver Videos
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* FOOTER AGENCY INFO matching exact user layout */}
       <footer className="w-full py-24 text-center border-t border-white/10 bg-black mt-20 select-none z-10">
