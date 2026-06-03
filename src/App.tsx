@@ -86,7 +86,7 @@ export default function App() {
   });
 
   // Active design template style for the phone emulator
-  const [selectedTemplate, setSelectedTemplate] = useState<'mulan' | 'sapo' | 'vintage' | 'kun'>('mulan');
+  const [selectedTemplate, setSelectedTemplate] = useState<'mulan' | 'sapo' | 'vintage' | 'kun' | 'blanco'>('mulan');
   // Pre-configured elegant golden template app URL from user's AI Studio app (using the direct Run sandbox deploy)
   const doradoUrl = 'https://ais-pre-4vkjyxlwubgp5gmsfzbkef7jzy-537333962464.us-west2.run.app';
 
@@ -211,7 +211,9 @@ export default function App() {
         ? 'https://www.princesayelsapo.gloop.liorah.pro'
         : selectedTemplate === 'vintage'
           ? 'https://vintage.gloop.liorah.pro'
-          : 'https://www.kun.gloop.liorah.pro/';
+          : selectedTemplate === 'kun'
+            ? 'https://www.kun.gloop.liorah.pro/'
+            : 'https://www.blanco.gloop.liorah.pro/';
 
     return (
       <div className="w-screen h-screen bg-black flex flex-col relative overflow-hidden">
@@ -224,7 +226,13 @@ export default function App() {
             ← Volver al Catálogo Gloop
           </button>
           <div className="hidden sm:flex items-center gap-2 text-[10px] text-white/50 font-mono">
-            <span>Explorando Invitación Premium Activa • {selectedTemplate === 'mulan' ? 'Mulan en Vivo' : selectedTemplate === 'sapo' ? 'Princesa y Sapo en Vivo' : selectedTemplate === 'vintage' ? 'Vintage en Vivo' : 'Kun en Vivo'}</span>
+            <span>Explorando Invitación Premium Activa • {
+              selectedTemplate === 'mulan' ? 'Mulan en Vivo' : 
+              selectedTemplate === 'sapo' ? 'Princesa y Sapo en Vivo' : 
+              selectedTemplate === 'vintage' ? 'Vintage en Vivo' : 
+              selectedTemplate === 'kun' ? 'Kun en Vivo' : 
+              'Blanco en Vivo'
+            }</span>
           </div>
         </div>
 
@@ -775,10 +783,10 @@ export default function App() {
                   </span>
                   <span className="text-[7px] px-1.5 py-0.5 rounded bg-gloop-cyan/10 text-gloop-cyan font-mono scale-90">LIVE IFRAME</span>
                 </div>
-                <div className="grid grid-cols-4 bg-black p-1 rounded-xl border border-white/10 gap-1 select-none">
+                <div className="grid grid-cols-5 bg-black p-0.5 rounded-xl border border-white/10 gap-0.5 select-none">
                   <button
                     onClick={() => setSelectedTemplate('mulan')}
-                    className={`py-2 text-[7px] sm:text-[8px] font-black uppercase rounded-lg transition-all cursor-pointer ${
+                    className={`py-2 text-[7px] font-black uppercase rounded-lg transition-all cursor-pointer ${
                       selectedTemplate === 'mulan'
                         ? 'bg-gloop-cyan text-black shadow-lg font-black'
                         : 'text-slate-400 hover:text-white'
@@ -788,17 +796,17 @@ export default function App() {
                   </button>
                   <button
                     onClick={() => setSelectedTemplate('sapo')}
-                    className={`py-2 text-[7px] sm:text-[8px] font-black uppercase rounded-lg transition-all cursor-pointer ${
+                    className={`py-2 text-[7px] font-black uppercase rounded-lg transition-all cursor-pointer ${
                       selectedTemplate === 'sapo'
                         ? 'bg-emerald-500 text-black shadow-lg font-black'
                         : 'text-slate-400 hover:text-white'
                     }`}
                   >
-                    Princesa y Sapo
+                    Sapo
                   </button>
                   <button
                     onClick={() => setSelectedTemplate('vintage')}
-                    className={`py-2 text-[7px] sm:text-[8px] font-black uppercase rounded-lg transition-all cursor-pointer ${
+                    className={`py-2 text-[7px] font-black uppercase rounded-lg transition-all cursor-pointer ${
                       selectedTemplate === 'vintage'
                         ? 'bg-amber-500 text-black shadow-lg font-black'
                         : 'text-slate-400 hover:text-white'
@@ -808,13 +816,23 @@ export default function App() {
                   </button>
                   <button
                     onClick={() => setSelectedTemplate('kun')}
-                    className={`py-2 text-[7px] sm:text-[8px] font-black uppercase rounded-lg transition-all cursor-pointer ${
+                    className={`py-2 text-[7px] font-black uppercase rounded-lg transition-all cursor-pointer ${
                       selectedTemplate === 'kun'
                         ? 'bg-sky-400 text-black shadow-lg font-black'
                         : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     Kun
+                  </button>
+                  <button
+                    onClick={() => setSelectedTemplate('blanco')}
+                    className={`py-2 text-[7px] font-black uppercase rounded-lg transition-all cursor-pointer ${
+                      selectedTemplate === 'blanco'
+                        ? 'bg-[#FF6B9E] text-black shadow-lg font-black'
+                        : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    Blanco
                   </button>
                 </div>
               </div>
@@ -844,6 +862,13 @@ export default function App() {
                 <p className="text-[9px] text-slate-400 italic leading-relaxed">
                   <strong className="text-sky-400 block font-sans not-italic mb-0.5 font-bold uppercase text-[8px]">Kun Real (Web Externa):</strong>
                   Carga en vivo del demo real <span className="text-white underline font-mono">www.kun.gloop.liorah.pro</span> de forma directa e interactiva dentro del emulador móvil.
+                </p>
+              )}
+
+              {selectedTemplate === 'blanco' && (
+                <p className="text-[9px] text-slate-400 italic leading-relaxed">
+                  <strong className="text-[#FF6B9E] block font-sans not-italic mb-0.5 font-bold uppercase text-[8px]">Blanco Gloop Real (Web Externa):</strong>
+                  Carga en vivo del demo real <span className="text-white underline font-mono">www.blanco.gloop.liorah.pro</span> de forma directa e interactiva dentro del emulador móvil.
                 </p>
               )}
             </div>
@@ -885,7 +910,9 @@ export default function App() {
                         ? 'https://www.princesayelsapo.gloop.liorah.pro'
                         : selectedTemplate === 'vintage'
                           ? 'https://vintage.gloop.liorah.pro'
-                          : 'https://www.kun.gloop.liorah.pro/'
+                          : selectedTemplate === 'kun'
+                            ? 'https://www.kun.gloop.liorah.pro/'
+                            : 'https://www.blanco.gloop.liorah.pro/'
                   }
                   className="w-full h-full border-0 bg-black"
                   title="Gloop Live Web Link Demo"
@@ -895,7 +922,15 @@ export default function App() {
                 {/* Overlay decorative banner for visual premium style */}
                 <div className="absolute top-2.5 left-1/2 transform -translate-x-1/2 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-1.5 pointer-events-none z-30 shadow-md">
                   <span className={`w-2 h-2 rounded-full animate-pulse shrink-0 ${
-                    selectedTemplate === 'mulan' ? 'bg-gloop-cyan' : selectedTemplate === 'sapo' ? 'bg-emerald-400' : selectedTemplate === 'vintage' ? 'bg-amber-400' : 'bg-sky-400'
+                    selectedTemplate === 'mulan' 
+                      ? 'bg-gloop-cyan' 
+                      : selectedTemplate === 'sapo' 
+                        ? 'bg-emerald-400' 
+                        : selectedTemplate === 'vintage' 
+                          ? 'bg-amber-400' 
+                          : selectedTemplate === 'kun' 
+                            ? 'bg-sky-400' 
+                            : 'bg-gloop-pink'
                   }`} />
                   <span className="text-[7.5px] text-slate-200 font-mono tracking-widest font-black uppercase whitespace-nowrap">
                     {selectedTemplate === 'mulan' 
@@ -904,7 +939,9 @@ export default function App() {
                         ? 'princesayelsapo.gloop.liorah.pro'
                         : selectedTemplate === 'vintage'
                           ? 'vintage.gloop.liorah.pro'
-                          : 'kun.gloop.liorah.pro'}
+                          : selectedTemplate === 'kun'
+                            ? 'kun.gloop.liorah.pro'
+                            : 'blanco.gloop.liorah.pro'}
                   </span>
                 </div>
               </div>
@@ -947,6 +984,43 @@ export default function App() {
                   <h3 className="puffy-white text-5xl mb-2 uppercase leading-none">Imagen JPG</h3>
                   <p className="text-gloop-cyan font-black text-[10px] uppercase mb-6 italic tracking-widest font-syne">Diseño sin límites de temática</p>
                   
+                  {/* Detailed specs */}
+                  <div className="mb-6 bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
+                    <p className="text-gloop-pink font-bold uppercase tracking-wider text-[10px] flex items-center gap-2 border-b border-white/5 pb-2">
+                      <Sparkles className="w-4 h-4" /> ¿DE QUÉ CONSTA ESTA INVITACIÓN?
+                    </p>
+                    <ul className="space-y-3.5 text-xs text-slate-300">
+                      <li className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-gloop-pink shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Diseño 100% Personalizado:</strong>
+                          Creamos una propuesta gráfica única adaptada por completo a tu temática elegida, tus colores y tus personajes preferidos.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-gloop-pink shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Formato Digital HD de Alta Calidad:</strong>
+                          Archivo de imagen listo, optimizado milimétricamente para que se luzca increíble y nítido en cualquier pantalla de celular.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-gloop-pink shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Distribución Ilimitada y Rápida:</strong>
+                          Se entrega un archivo estándar (.jpg), el cual podés reenviar de forma ilimitada por WhatsApp, Instagram, Telegram o correo electrónico sin costos adicionales.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-gloop-pink shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Apto Para Todo Tipo de Eventos:</strong>
+                          Excelente solución práctica para cumpleaños infantiles, comuniones, baby showers, bautismos, XV o eventos express.
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
                   <div className="explainer-box">
                     <p className="puffy-white text-3xl mb-2 text-center uppercase">Cualquier Personaje</p>
                     <div className="grid grid-cols-1 gap-3 mt-4">
@@ -972,7 +1046,7 @@ export default function App() {
                     <div className="flex items-center justify-between">
                       <p className="text-[14px] font-black text-gloop-cyan font-mono">Alias: jimenagloop</p>
                       <button 
-                        onClick={handleCopyAlias}
+                         onClick={handleCopyAlias}
                         className="text-[9px] uppercase tracking-wider font-bold text-gloop-cyan border border-gloop-cyan/30 rounded-md px-2 py-0.5 hover:bg-gloop-cyan hover:text-black transition-all"
                       >
                         {copiedState ? 'Copiado!' : 'Copiar'}
@@ -997,6 +1071,46 @@ export default function App() {
                   <h3 className="puffy-white text-5xl mb-2 uppercase leading-none">PDF + Links</h3>
                   <p className="text-gloop-cyan font-black text-[10px] uppercase mb-6 italic tracking-widest font-syne">Botones Interactivos</p>
                   
+                  {/* Detailed specs */}
+                  <div className="mb-6 bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
+                    <p className="text-gloop-pink font-bold uppercase tracking-wider text-[10px] flex items-center gap-2 border-b border-white/5 pb-2">
+                      <Layers className="w-4 h-4 animate-pulse text-gloop-pink" /> ¿DE QUÉ CONSTA ESTA INVITACIÓN?
+                    </p>
+                    <p className="text-xs text-slate-400 italic font-sans">
+                      Es una invitación de alta fidelidad donde tus invitados no solo aprecian un diseño hermoso, sino que también pueden interactuar mediante botones táctiles digitales optimizados sobre el archivo PDF.
+                    </p>
+                    <ul className="space-y-3.5 text-xs text-slate-300">
+                      <li className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-gloop-pink shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Botones Táctiles Inteligentes:</strong>
+                          Botones integrados de forma estética directamente en la gráfica de la invitación para ejecutar comandos inmediatos al pulsar sobre ellos.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <MapPin className="w-4 h-4 text-gloop-pink shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Ubicación GPS en un Toque:</strong>
+                          Al presionar el botón de ubicación, se abre al instante Google Maps, Waze o Apple Maps con las coordenadas exactas y ruta de tu festejo.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Phone className="w-4 h-4 text-gloop-pink shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Confirmar Asistencia por WhatsApp:</strong>
+                          Al presionar "Confirmar Asistencia", abre automáticamente WhatsApp con un mensaje pre-cargado indicando la confirmación, facilitando así la confirmación rápida.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-gloop-pink shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Cualquier Personaje o Temática:</strong>
+                          Esquema gráfico único desarrollado a pedido con tipografías y paletas de colores profesionales.
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
                   <div className="explainer-box">
                     <p className="puffy-white text-3xl mb-4 text-center uppercase">¡Cualquier Personaje!</p>
                     <div className="space-y-3">
@@ -1042,6 +1156,50 @@ export default function App() {
                   <h3 className="puffy-white text-5xl mb-2 uppercase leading-none font-bubble">Video Inv.</h3>
                   <p className="text-gloop-cyan font-black text-[10px] uppercase mb-6 italic tracking-widest font-syne">Animación &amp; Música</p>
                   
+                  {/* Detailed specs */}
+                  <div className="mb-6 bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
+                    <p className="text-gloop-cyan font-bold uppercase tracking-wider text-[10px] flex items-center gap-2 border-b border-white/5 pb-2">
+                      <Video className="w-4 h-4 text-gloop-cyan" /> ¿DE QUÉ CONSTA ESTA INVITACIÓN?
+                    </p>
+                    <ul className="space-y-3.5 text-xs text-slate-300">
+                      <li className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-gloop-cyan shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Formato Vertical HD (1080x1920):</strong>
+                          Proporción 9:16 perfecta para celulares, ideal para visualizar a pantalla completa en WhatsApp, Instagram, TikTok o Reels.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-gloop-cyan shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Animación Fluida de Textos y Gráficos:</strong>
+                          Efectos dinámicos y transiciones suaves de los textos principales, fecha y detalles de tu fiesta que despiertan la atención de tus invitados.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Sparkles className="w-4 h-4 text-gloop-cyan shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Efectos Especiales Premium:</strong>
+                          Efectos estéticos urbanos, destellos de luz, polvos mágicos o brillos integrados artesanalmente de acuerdo a la estética de la fiesta.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Award className="w-4 h-4 text-gloop-cyan shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Música de Fondo a Tu Gusto:</strong>
+                          Configuramos el video con la canción o pista que desees para darle un clima totalmente único y festivo.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-gloop-cyan shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Impacto Inmediato:</strong>
+                          Mini video de 15 a 30 segundos de duración, excelente para capturar la emoción de tus redes y enviarlo directamente.
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
                   <div className="explainer-box">
                     <p className="puffy-white text-3xl mb-4 text-center uppercase">¡Todo Personaje!</p>
                     <div className="grid grid-cols-2 gap-3">
@@ -1087,6 +1245,60 @@ export default function App() {
                   <h3 className="puffy-white text-5xl mb-2 uppercase leading-none font-bubble">Web Inv.</h3>
                   <p className="text-gloop-pink font-black text-[10px] uppercase mb-6 italic tracking-widest font-syne">Experiencia Premium</p>
                   
+                  {/* Detailed specs */}
+                  <div className="mb-6 bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
+                    <p className="text-gloop-cyan font-bold uppercase tracking-wider text-[10px] flex items-center gap-2 border-b border-white/5 pb-2">
+                      <Globe className="w-4 h-4 text-gloop-cyan" /> ¿DE QUÉ CONSTA ESTA INVITACIÓN?
+                    </p>
+                    <p className="text-xs text-slate-400 italic">
+                      Es la experiencia digital más sofisticada para tu evento. Un link interactivo personalizado 100% adaptable donde tus seres queridos disfrutan el festejo desde antes.
+                    </p>
+                    <ul className="space-y-4 text-xs text-slate-300">
+                      <li className="flex items-start gap-2.5">
+                        <Clock className="w-4 h-4 text-gloop-cyan shrink-0 mt-0.5 animate-pulse" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Cuenta Regresiva Activa:</strong>
+                          Reloj digital dinámico en tiempo real que mide los días, horas, minutos y segundos exactos para generar gran expectativa entusiasmando a los invitados.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <User className="w-4 h-4 text-gloop-cyan shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Asistencia RSVP Inteligente integrada:</strong>
+                          Tus invitados confirman asistencia en tiempo real indicando cantidad de acompañantes, opción de menú alimentario especial (celiaco, vegetariano, etc.) y un saludo especial, datos que recibís al instante.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <MapPin className="w-4 h-4 text-gloop-cyan shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Mapa GPS Interactivo:</strong>
+                          Muestra el lugar de ceremonia o fiesta interactivo con botones dedicados para abrir Google Maps, Waze o Apple Maps con la ruta más directa.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <QrCode className="w-4 h-4 text-gloop-cyan shrink-0 mt-0.5 animate-bounce" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Álbum Colaborativo de Invitados (Código QR):</strong>
+                          Los invitados escanean un QR personalizado en el salón para subir al instante todas las fotos y videos capturados del evento a tu carpeta digital compartida, co-creando un recuerdo vivo sin fin.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <ExternalLink className="w-4 h-4 text-gloop-cyan shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Pista de Música o Playlist Spotify:</strong>
+                          Para ambientar tu invitación con la melodía perfecta que se reproduce mientras los invitados exploran los detalles.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-gloop-cyan shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white block mb-0.5">Secciones Especiales Incluidas:</strong>
+                          Galería de fotos profesionales de book, datos de regalos/CBU para obsequios cómodamente y cronograma de tiempos elegantes.
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                     <div className="explainer-box border-gloop-cyan mb-0">
                       <div className="bg-gloop-cyan/20 p-4 rounded-2xl border border-gloop-cyan/40 mb-4 text-center">
